@@ -14,12 +14,12 @@ Use `venv` with python 3.
 ```shell
 # ---- Setup
 $ sudo apt install python3 python3-venv
-$ python3 -m venv ~/.venv/simcel
+$ python3 -m venv ~/.venv/env
 # ---- Activate venv
-$ source ~/.venv/simcel/bin/activate
-(simcel) $ pip3 install -r requirements.txt
+$ source ~/.venv/env/bin/activate
+(env) $ pip3 install -r requirements.txt
 # ---- Running
-(simcel) $ python3 main.py
+(env) $ python3 main.py
 ```
 
 ## Usage
