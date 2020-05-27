@@ -1,5 +1,7 @@
 # Machinery Python SDK
 
+[PyPI](https://pypi.org/project/pymachinery/)
+
 This is a subset Python implementation of a worker for `RichardKnop/machinery`.
 
 ## Limitations
