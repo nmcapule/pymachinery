@@ -8,7 +8,6 @@ from broker.redis import RedisBroker
 from backend.mongodb import MongoDbBackend
 
 DEFAULT_QUEUE = "default_queue"
-LOGGING_FORMAT = "[%(asctime)-15s] %(levelname)-4s: %(message)s"
 
 
 class Value:
@@ -184,30 +183,3 @@ class Machinery:
             queue = subtask.get("RoutingKey") or self.queue
             self.backend.save_state(subtask, state="PENDING")
             self.broker.send_task(queue, subtask)
-
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG, format=LOGGING_FORMAT)
-
-    def add_worker(a: Value, b: Value):
-        return (Value("int64", a.value() + b.value()))
-
-    def multiply_worker(a: Value, b: Value):
-        return (Value("int64", a.value() * b.value()))
-
-    def worker(name: Value, delayms: Value):
-        return (
-            Value("string", f"hello {name.value()}"),
-            Value("int64", delayms),
-        )
-
-    machinery = Machinery(
-        broker_uri="redis://:helloworld@localhost:6379",
-        backend_uri=
-        "mongodb://mongo:moonbucks@localhost:27017/?authSource=admin",
-        queue="machinery_tasks",
-    )
-    machinery.register_worker("add", add_worker)
-    machinery.register_worker("multiply", multiply_worker)
-    machinery.register_worker("hello", worker)
-    machinery.start()
