@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pymachinery-nmcapule",  # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Nathaniel M. Capule",
     author_email="nmcapule@gmail.com",
     description="Python workers for RichardKnop/machinery",
