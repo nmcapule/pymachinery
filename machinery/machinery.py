@@ -4,8 +4,8 @@ import time
 
 from typing import Dict, Tuple
 
-from broker.redis import RedisBroker
-from backend.mongodb import MongoDbBackend
+from machinery.broker.redis import RedisBroker
+from machinery.backend.mongodb import MongoDbBackend
 
 DEFAULT_QUEUE = "default_queue"
 

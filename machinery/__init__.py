@@ -1,1 +1,1 @@
-from machinery import Value, Machinery
+from machinery.machinery import Value, Machinery
