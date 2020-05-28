@@ -2,7 +2,7 @@ import json
 import logging
 import time
 
-from typing import Dict, Tuple
+from typing import Dict, Tuple, List
 
 from machinery.broker.redis import RedisBroker
 from machinery.backend.mongodb import MongoDbBackend
@@ -95,6 +95,11 @@ class Machinery:
     def register_worker(self, task_name: str, callback):
         """Creates a worker callback for the given task name."""
         self.workers[task_name] = callback
+
+    def send_simple_task(self, queue: str, task_name: str, args: List):
+        """Sends a simple task to the broker."""
+        self.broker.send_simple_task(queue, task_name, args)
+        return task
 
     def start(self, poll_secs=3):
         """Start consuming tasks from the task queue."""
