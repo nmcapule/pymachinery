@@ -13,7 +13,7 @@ class RedisBroker:
 
     def send_simple_task(self, queue: str, name: str, args: List):
         task = {
-            "UUID": f"task_{uuid.UUID()}",
+            "UUID": f"task_{uuid.uuid1()}",
             "Name": name,
             "RoutingKey": queue,
             "ETA": None,
